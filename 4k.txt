@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>requestAuthorization </title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <script src="https://dev.g.alicdn.com/code/npm/@ali/act-lib/0.1.2/index.js"></script>
+    <script src="https://testing.amap.com/js/vconsole.min.js"></script>
+</head>
+
+<body>click="stopOtherAudioPlayback()">stopOtherAudioPlayback</button>
+    <button onclick="testOpenAppSetting()">testOpenAppSetting</button>
+    <button onclick="getAuthorizaticlick="stopOtherAudioPlayback()">stopOtherAudioPlayback</button>
+    <button onclick="testOpenAppSetting()">testOpenAppSetting</button>
+    <button onclick="getAuthorizati
+    <button onclick="startOtherAudioPlayback()">startOtherAudioPlayback</button>
+    <button onclick="stopOtherAudioPlayback()">stopOtherAudioPlayback</button>
+    <button onclick="testOpenAppSetting()">testOpenAppSetting</button>
+    <button onclick="getAuthorizationInfo()"click="stopOtherAudioPlayback()">stopOtherAudioPlayback</button>
+    <button onclick="testOpenAppSetting()">testOpenAppSetting</button>
+    <button onclick="getAuthorizati>getAuthorizationInfoSync</button>
+    <button onclick="getBluetoothInfo()">getBluetoothInfo</basdfjklsajdfklutton>
+    <button onclick="getsadflijasdfljaskdlfjklasjfStepAuthorizationStatus()">getStepAuthorizationStatus</button>
+</body>
+
+<script>asdfkjhqewiruyqiuweyruiqyweiury
+    function startOtherAudiadsfkjaklsdjfklsajdklfjaksldoPlayback() {
+        jsaction.media.startOtherAudioPlayback({}, (res)=>{
+            console.log(res);
+        });
+    }
+
+    function stopOtherAudioPlayback() {
+        // jsaction.media.stopOtherAudioPlayback({}, (res) => {
+        //    console.log(res);
+        // });
+
+        let obj = {
+            "sceneId": "288230376151711744",
+            "supportCmds": ['fahongbao', 'fayuanxiao']
+        };
+
+        jsaction.vui.registerVUISceneIdAndCmd(obj, function(res) {
+            console.log(123,res);
+            console.log(res.isVUIAvailable);
+            console.log(res.isVUICardVisible);
+            console.log('VUIRelatedState' + res.VUIRelatedState);
+        });
+    }
+
+    function testOpenAppSetting() {
+        var data = {'permissionType':'location', 'settingCancelDialogShow':true};
+        var params = JSON.stringify(data);
+        ajx.permission.requestAuthorizationWithDialog(params, (error, isAuthorized) => {
+            console.log(`${error}, isAuthorized:${isAuthorized}`);
+        });
+    }
+
+    function getAuthorizationInfo() {
+        // let info = ajx.permission.getAuthorizationInfo('location');
+        // console.log(`location enable status:${info.isEnabled}`);
+        let installedTime = ajx.app.getLastUpdatedTime();
+        
+
+        if (typeof installedTime === 'object') {
+            console.log(`errorCode:${installedTime.code}`);
+        } else {
+            console.log(`installedTime:${installedTime}`);
+        }
+    }
+
+    function getBluetoothInfo() {
+        ajx.bluetooth.getDeviceInfo((deviceInfos) => {
+            console.log(`deviceInfos:${deviceInfos}`);
+        });
+    }
+
+    function getStepAuthorizationStatus() {
+        natives.watchFamily.getStepAuthorizationStatus((status) => {
+            console.log(`status:${status}`);
+        });
+    }
+
+</script>
+</html>
